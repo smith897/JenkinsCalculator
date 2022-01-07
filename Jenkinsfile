@@ -15,19 +15,16 @@ pipeline {
                 sh 'mvn clean'
             }
         }
-
         stage ('Build') {
             steps {
                 sh 'mvn compile'
             }
         }
-
         stage ('Short Tests') {
             steps {
                 sh 'mvn -Dtest=CalculatorTest test'
             }
         }
-
         stage ('Long Tests') {
             steps {
                 sh 'mvn -Dtest=CalculatorTestThorough test'
@@ -38,7 +35,6 @@ pipeline {
                 }
             }
         }
-
         stage ('Package') {
             steps {
                 sh 'mvn package'
@@ -46,7 +42,6 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar'
             }
         }
-
         stage ('Building image') {
 
                     steps {
